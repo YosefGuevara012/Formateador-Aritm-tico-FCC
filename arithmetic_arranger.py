@@ -31,22 +31,33 @@ def arithmetic_arranger(problems):
       if len(num1) > 4  or len(num2) > 4:
         print("Error: Numbers cannot be more than four digits.")
     
-
     result=[]
 
+    # calculations
 
     for(num1,operator,num2) in zip(num_1,operators,num_2):
       if operator == "+":
         result.append(str(int(num1)+int(num2)))
       else:
         result.append(str(int(num1)-int(num2)))
+
+
+    botton =[]
+    lines = []
     
+    # set the proper format on two list
+    for(num1,operator,num2) in zip(num_1,operators,num_2):
+      if len(num1) > len(num2):
+        botton.append(operator + " "*(len(num1)-len(num2)+1) + num2)
+        lines.append("-"*(len(num1)+2))
+      elif len(num1) < len(num2):
+        botton.append(operator + " "*(len(num2)-len(num1)) + num2)
+        lines.append("-"*(len(num2)+2))
+      else:
+        botton.append(operator + " " + num2)
+        lines.append("-"*(len(num1)+2))
 
-    all_lists = num_1
-
-    arranged_problems
 
 
-
-    return result[2]
+    return botton[1]
     #return arranged_problems
