@@ -1,7 +1,7 @@
-def arithmetic_arranger(problems):
+def arithmetic_arranger(problems,check=False):
     
     if len(problems) > 5:
-      raise TypeError("Error: Too many problems.")
+      return"Error: Too many problems."
     
     num_1=[]
     num_2=[]
@@ -19,17 +19,17 @@ def arithmetic_arranger(problems):
 
     for operator in operators:
       if operator != "+" and operator != "-":
-        raise TypeError("Error: Operator must be '+' or '-'.")
+        return"Error: Operator must be '+' or '-'."
     
     for(num1,num2) in zip(num_1,num_2):
       if num1.isdigit() == False or num2.isdigit() == False:
-        raise TypeError("Error: Numbers must only contain digits.")
+        return"Error: Numbers must only contain digits."
 
     # checking the number of digits
 
     for(num1,num2) in zip(num_1,num_2):
       if len(num1) > 4  or len(num2) > 4:
-        raise TypeError ("Error: Numbers cannot be more than four digits.")
+        return"Error: Numbers cannot be more than four digits."
     
     result=[]
 
@@ -76,9 +76,13 @@ def arithmetic_arranger(problems):
     for line in lines:
       arranged_problems = arranged_problems + line + " "*4
     
-
-    
-
+    if check == True:
+      arranged_problems = arranged_problems + "\n" 
+      for num in result:
+        if(int(num)>0):
+          arranged_problems = arranged_problems + " "*2 + num + " "*4
+        if(int(num)<0):
+          arranged_problems = arranged_problems + " " + num + " "*4
 
 
     return arranged_problems
