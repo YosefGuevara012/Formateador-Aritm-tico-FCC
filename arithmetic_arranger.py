@@ -19,17 +19,17 @@ def arithmetic_arranger(problems):
 
     for operator in operators:
       if operator != "+" and operator != "-":
-        print("Error: Operator must be '+' or '-'.")
+        raise TypeError("Error: Operator must be '+' or '-'.")
     
     for(num1,num2) in zip(num_1,num_2):
       if num1.isdigit() == False or num2.isdigit() == False:
-        print("Error: Numbers must only contain digits.")
+        raise TypeError("Error: Numbers must only contain digits.")
 
     # checking the number of digits
 
     for(num1,num2) in zip(num_1,num_2):
       if len(num1) > 4  or len(num2) > 4:
-        print("Error: Numbers cannot be more than four digits.")
+        raise TypeError ("Error: Numbers cannot be more than four digits.")
     
     result=[]
 
@@ -41,23 +41,44 @@ def arithmetic_arranger(problems):
       else:
         result.append(str(int(num1)-int(num2)))
 
-
+    upper = []
     botton =[]
     lines = []
     
     # set the proper format on two list
+
     for(num1,operator,num2) in zip(num_1,operators,num_2):
       if len(num1) > len(num2):
+        upper.append(" "*(2)+ num1)
         botton.append(operator + " "*(len(num1)-len(num2)+1) + num2)
         lines.append("-"*(len(num1)+2))
       elif len(num1) < len(num2):
-        botton.append(operator + " "*(len(num2)-len(num1)) + num2)
+        upper.append(" "*((len(num2) - len(num1) + 2))+ num1)
+        botton.append(operator + " " + num2)
         lines.append("-"*(len(num2)+2))
       else:
+        upper.append(" "*2 + num1)
         botton.append(operator + " " + num2)
         lines.append("-"*(len(num1)+2))
 
+    arranged_problems=""
+
+    for num in upper:
+      arranged_problems = arranged_problems + num + " "*4
+
+    arranged_problems = arranged_problems + "\n" 
+
+    for under in botton:
+      arranged_problems = arranged_problems + under + " "*4
+    
+    arranged_problems = arranged_problems + "\n" 
+
+    for line in lines:
+      arranged_problems = arranged_problems + line + " "*4
+    
+
+    
 
 
-    return botton[1]
-    #return arranged_problems
+
+    return arranged_problems
