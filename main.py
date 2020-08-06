@@ -4,7 +4,7 @@ from unittest import main
 
 
 
-print(arithmetic_arranger(["3 + 855", "3801 - 2", "45 + 43", "123 + 49"],True))
+print(arithmetic_arranger(["32 - 698", "1 - 3801", "45 + 43", "123 + 49"],True))
 
 
 # Run unit tests automatically

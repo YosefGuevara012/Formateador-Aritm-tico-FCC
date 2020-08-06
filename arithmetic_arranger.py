@@ -34,7 +34,7 @@ def arithmetic_arranger(problems,check=False):
     result=[]
 
     # calculations
-
+  
     for(num1,operator,num2) in zip(num_1,operators,num_2):
       if operator == "+":
         result.append(str(int(num1)+int(num2)))
@@ -63,26 +63,45 @@ def arithmetic_arranger(problems,check=False):
 
     arranged_problems=""
 
-    for num in upper:
-      arranged_problems = arranged_problems + num + " "*4
+    for i in range(len(upper)):
+      if i == len(upper)-1:
+        arranged_problems += upper[i]
+      else:
+        arranged_problems = arranged_problems + upper[i] + " "*4
 
     arranged_problems = arranged_problems + "\n" 
 
-    for under in botton:
-      arranged_problems = arranged_problems + under + " "*4
+    for i in  range(len(botton)):
+      if i == len(botton)-1:
+        arranged_problems += botton[i]
+      else:
+        arranged_problems = arranged_problems + botton[i] + " "*4
+
     
     arranged_problems = arranged_problems + "\n" 
 
-    for line in lines:
-      arranged_problems = arranged_problems + line + " "*4
+    for i in  range(len(lines)):
+      if i == len(lines)-1:
+        arranged_problems += lines[i]
+      else:
+        arranged_problems = arranged_problems + lines[i] + " "*4
     
     if check == True:
-      arranged_problems = arranged_problems + "\n" 
-      for num in result:
-        if(int(num)>0):
-          arranged_problems = arranged_problems + " "*2 + num + " "*4
-        if(int(num)<0):
-          arranged_problems = arranged_problems + " " + num + " "*4
+      arranged_problems = arranged_problems + "\n"
+       
+      for i in range(len(result)):
+
+        if i == len(result[i])-1:
+          if(int(result[i])>0):
+            arranged_problems = arranged_problems + " "*2 + result[i]
+          if(int(result[i])<0):
+            arranged_problems = arranged_problems + " " + result[i] 
+        else:
+          if(int(result[i])>0):
+            arranged_problems = arranged_problems + " "*2 + result[i] + " "*4
+          if(int(result[i])<0):
+            arranged_problems = arranged_problems + " " + result[i] + " "*4
 
 
+    
     return arranged_problems
