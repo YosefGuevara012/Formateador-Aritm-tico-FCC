@@ -91,7 +91,7 @@ def arithmetic_arranger(problems,check=False):
        
       for i in range(len(result)):
 
-        if i == len(result[i])-1:
+        if i == len(result)-1:
           if(int(result[i])>0):
             arranged_problems = arranged_problems + " "*2 + result[i]
           if(int(result[i])<0):
@@ -103,5 +103,4 @@ def arithmetic_arranger(problems,check=False):
             arranged_problems = arranged_problems + " " + result[i] + " "*4
 
 
-    
     return arranged_problems
